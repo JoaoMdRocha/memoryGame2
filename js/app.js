@@ -5,6 +5,7 @@ for (var i = ul.children.length; i >= 0; i--) {
 
 
 
+
     var listItems = document.getElementById("board").getElementsByTagName('li');
 
     for (var i=0; i<listItems.length; i++) {
@@ -12,5 +13,9 @@ for (var i = ul.children.length; i >= 0; i--) {
     }
 
     function doStuff() {
-        listItems.removeChild(div);
+
+
+        const cardTop = this.firstElementChild;
+        cardTop.style.cssText="display:none";
+
     }
