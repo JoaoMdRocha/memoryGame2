@@ -68,9 +68,32 @@ img{
 
   width: 150px;
   height: 150px;
-  background-color: black;
   border-radius: 10px;
   position: absolute;
 
+
+}
+
+
+
+.blackbck{
+
+
+    background-color: black;
+
+}
+
+.redbck{
+
+
+  background-color:  red;
+
+}
+
+
+.greenbck{
+
+
+  background-color: green;
 
 }

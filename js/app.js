@@ -1,7 +1,16 @@
 const ul = document.querySelector('ul');
-let clickCount =0;
-let compareArray = [];
+let clickCount = 0;
+let compare;
+let compare2;
 let cardTop ;
+let cardsFlipped= [] ;
+let length;
+let arrayCompare = [];
+let addToArrayClass;
+let test;
+let redCards = [];
+let redCardsLength;
+let correctGuesses = 0;
 
 
 //SHUFFLES CARDS
@@ -21,52 +30,70 @@ for (var i = ul.children.length; i >= 0; i--) {
 
     function flipCard() {
 //Keeps tracks of number of clicks
-      clickCount = clickCount +1
+      clickCount= clickCount +1;
+
 
 //ADDS "flippedCard" class to cards that have been flipped
-        cardTop = this.firstElementChild;
-        cardTop.style.cssText="display:none";
-        this.classList.toggle("flippedCard");
+        cardTop= this.firstElementChild;
+//Removes black cover on card - flips it
+        cardTop.classList.toggle("blackbck");
+        this.classList.add("flippedCard");
+//Creates array with the class that states the animal name for each of the flipped cards
+        addToArrayClass=  this.firstElementChild.classList.item(1);
+        arrayCompare.push(addToArrayClass);
+        addToArrayCard=  this.firstElementChild;
+        cardsFlipped.push(addToArrayCard);
+        length= arrayCompare.length;
 
 
+//on every second click do:
+        if(clickCount %2 === 0){
 
-      if(clickCount == 2){
-//Compares images on cards with "flippedCard as a class"
-        const cardsFlipped = document.getElementsByClassName("flippedCard");
+//compares the last two elements of the array - the classes of the last two cards that have been flipped
+          if(arrayCompare[length-2] == arrayCompare[length-1]){
+          correctGuesses +=1;
+          console.log(correctGuesses);
 
+//gives cards a green colour if they are the same
+          for (i=1;i<= 2; i++){
 
-        for (i=0;i< cardsFlipped.length; i++){
-
-
-      const checkImg = cardsFlipped[i].firstElementChild;
-      compareArray[i]=checkImg.classList.item(1);
-
-
-        }
+            cardsFlipped[length-i].parentElement.classList.toggle("greenbck");
 
 
-
-        if(compareArray[0] == compareArray[1]){
-
-          for (i=0;i< cardsFlipped.length; i++){
-
-         cardsFlipped[i].style.backgroundColor = "green";
 
           }
 
-      }else{
-
-        for (i=0;i< cardsFlipped.length; i++){
-
-       cardsFlipped[i].style.backgroundColor = "red";
-      
-
-        }
-
-        }
+//gives cards a red colour if they are not the same
+       }else{
 
 
+         for (i=1;i<= 2; i++){
+
+           test= cardsFlipped[length-i].parentElement;
+           test.classList.add("redbck");
+           redCards.push(test);
+           redCardsLength = redCards.length;
+            }
+
+
+
+//flips the cards back to black and removes the previous red colour ad flippedCard classes so these can be added again
+//if the cards are flipped again
+          setTimeout(function() {
+            for (i=1;i<= 2; i++){
+              console.log(redCards[i]);
+             redCards[redCardsLength-i].classList.toggle("redbck");
+             redCards[redCardsLength-i].classList.toggle("flippedCard");
+
+             redCards[redCardsLength-i].firstElementChild.classList.add("blackbck");
+           }
+         }, 1000);
+
+       }
 
 
       }
-    }
+
+
+
+}
