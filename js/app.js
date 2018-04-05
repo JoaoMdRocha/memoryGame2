@@ -11,6 +11,11 @@ let test;
 let redCards = [];
 let redCardsLength;
 let correctGuesses = 0;
+const button = document.getElementById('play');
+let successDiv;
+let t0;
+let t1;
+
 
 
 //SHUFFLES CARDS
@@ -33,10 +38,17 @@ for (var i = ul.children.length; i >= 0; i--) {
       clickCount= clickCount +1;
 
 
+//keeps track of time
+
+
+
+
+
+
 //ADDS "flippedCard" class to cards that have been flipped
         cardTop= this.firstElementChild;
 //Removes black cover on card - flips it
-        cardTop.classList.toggle("blackbck");
+        cardTop.classList.remove("blackbck");
         this.classList.add("flippedCard");
 //Creates array with the class that states the animal name for each of the flipped cards
         addToArrayClass=  this.firstElementChild.classList.item(1);
@@ -46,13 +58,38 @@ for (var i = ul.children.length; i >= 0; i--) {
         length= arrayCompare.length;
 
 
+        if(clickCount ===1){
+
+          t0 = performance.now();
+
+        }
+
 //on every second click do:
         if(clickCount %2 === 0){
+
+//updates the number of attempts
+            document.getElementById('attempts').innerHTML = "Attempts: " + (clickCount/2);
+
+//REMOVE Star if
+            if(clickCount>20){
+
+
+
+                const removeStar = document.getElementById('star1')
+                removeStar.style.display="none";
+
+            }
+
+            if(clickCount>30){
+              const removeStar = document.getElementById('star2')
+              removeStar.style.display="none";
+
+            }
 
 //compares the last two elements of the array - the classes of the last two cards that have been flipped
           if(arrayCompare[length-2] == arrayCompare[length-1]){
           correctGuesses +=1;
-          console.log(correctGuesses);
+
 
 //gives cards a green colour if they are the same
           for (i=1;i<= 2; i++){
@@ -81,7 +118,7 @@ for (var i = ul.children.length; i >= 0; i--) {
 //if the cards are flipped again
           setTimeout(function() {
             for (i=1;i<= 2; i++){
-              console.log(redCards[i]);
+
              redCards[redCardsLength-i].classList.toggle("redbck");
              redCards[redCardsLength-i].classList.toggle("flippedCard");
 
@@ -91,9 +128,27 @@ for (var i = ul.children.length; i >= 0; i--) {
 
        }
 
+        if(correctGuesses==8){
+          t1 = performance.now();
+          totalTime = Math.trunc((t1-t0)/1000);
+          document.getElementById('output').innerHTML = "You finished in " + totalTime + " seconds,"  +(clickCount/2) + " attempts";
+          const successDiv = document.querySelector(".success");
+          successDiv.style.display="block";
+
+        }
 
       }
 
 
 
-}
+    }
+
+
+//removes Success message Overlay when Play Again button is clicked
+    button.addEventListener('click', function(){
+
+
+      const successDiv = document.querySelector(".success");
+      successDiv.style.display="none";
+
+    });

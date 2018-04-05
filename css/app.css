@@ -14,11 +14,28 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
 
 }
+
+p,
+h3,
+h1{
+  text-align: center;
+}
+
+h1{
+
+  margin-bottom: 0px;
+
+}
+
+button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 
 ul{
 
@@ -30,8 +47,8 @@ li{
 
   background-color: blue;
   border: 1px solid black;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 15px;
   border-radius: 10px;
   display:flex;
@@ -40,23 +57,51 @@ li{
 
 }
 
-img{
+#top-menu{
+
+  width: 100%;
+
+  display: flex;
+
+}
+
+#stars{
 
 
+  width: 50%;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding-left: 35%;
+
+}
+
+.starImg{
+
+  width: 20px;
+  height: 20px;
+
+}
+
+#attempts{
+  margin-top: 20px;
+  padding-left:12%;
+  width: 50%;
 
 
 }
+
 
 
 .container{
 
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin-top: 2%;
   border-radius: 20px;
 
-  width: 800px;
-  height: 800px;
+  width: 750px;
+  height: 750px;
   background-color: grey;
   display: flex;
   flex-wrap: wrap;
@@ -64,10 +109,38 @@ img{
 
 }
 
+
+.success{
+
+
+  display: none;
+  width: 60%;
+  height: 40%;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 1;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+
+  align-items: center;
+
+}
+
+#winningMessage{
+
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+
+
+}
+
 .top{
 
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 10px;
   position: absolute;
 
