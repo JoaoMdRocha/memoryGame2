@@ -14,6 +14,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Poor Story', cursive;
 
 }
 
@@ -45,10 +46,10 @@ ul{
 
 li{
 
-  background-color: blue;
+  background-color: #519dcc;
   border: 1px solid black;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   margin: 15px;
   border-radius: 10px;
   display:flex;
@@ -59,9 +60,10 @@ li{
 
 #top-menu{
 
-  width: 100%;
-
+  width: 70%;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -72,7 +74,8 @@ li{
   display: flex;
   margin-top: 20px;
   margin-bottom: 0px;
-  padding-left: 35%;
+  padding-left: 25%;
+
 
 }
 
@@ -85,9 +88,18 @@ li{
 
 #attempts{
   margin-top: 20px;
-  padding-left:12%;
-  width: 50%;
+  width: 15%;
 
+
+
+}
+
+#time{
+
+  margin-top: 20px;
+  width: 25%;
+  
+  padding-left: 0;
 
 }
 
@@ -102,7 +114,7 @@ li{
 
   width: 750px;
   height: 750px;
-  background-color: grey;
+  background-color: #6c8c94;
   display: flex;
   flex-wrap: wrap;
 
@@ -159,7 +171,7 @@ li{
 .redbck{
 
 
-  background-color:  red;
+  background-color:  #d97152;
 
 }
 
@@ -167,6 +179,6 @@ li{
 .greenbck{
 
 
-  background-color: green;
+  background-color: #60e3bc;
 
 }
