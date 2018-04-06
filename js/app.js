@@ -120,7 +120,7 @@ length= arrayCompare.length;
 
   //If player wins the game, get the pop up congratulating
 
-      if(correctGuesses==1){
+      if(correctGuesses==8){
         document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts and " + starRating + " stars" ;
         const successDiv = document.querySelector(".success");
 
