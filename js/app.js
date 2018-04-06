@@ -20,6 +20,7 @@ var t;
 var timer_is_on = 0;
 let removeStar1;
 let removeStar2;
+let starRating = 3;
 
 
 //SHUFFLES CARDS
@@ -119,8 +120,8 @@ length= arrayCompare.length;
 
   //If player wins the game, get the pop up congratulating
 
-      if(correctGuesses==8){
-        document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts";
+      if(correctGuesses==1){
+        document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts and " + starRating + " stars" ;
         const successDiv = document.querySelector(".success");
 
         successDiv.style.display="block";
@@ -186,16 +187,28 @@ function resetBoard(){
   document.getElementById('attempts').innerHTML = "Attempts: ";
   if (clickCount>20){
   removeStar1.style.display="block";
+  starRating = 2;
   }
   if (clickCount>30){
   removeStar2.style.display="block";
+  starRating =1;
   }
 
 
   clickCount = 0;
   correctGuesses = 0;
+  shuffle();
 
 
 
 
 }
+
+const restartButton = document.getElementById("restartIcon");
+restartButton.addEventListener('click', function(){
+
+  resetBoard();
+  stopCount();
+
+
+})

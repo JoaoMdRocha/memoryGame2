@@ -30,6 +30,13 @@ h1{
 
 }
 
+img{
+
+  max-width: 100%;
+  max-height: 100%;
+
+}
+
 button{
   display: block;
   margin-left: auto;
@@ -48,9 +55,9 @@ li{
 
   background-color: #519dcc;
   border: 1px solid black;
-  width: 140px;
-  height: 140px;
-  margin: 15px;
+  width: 20%;
+  height: 20%;
+  margin: 2%;
   border-radius: 10px;
   display:flex;
   align-items: center;
@@ -98,11 +105,20 @@ li{
 
   margin-top: 20px;
   width: 25%;
-  
+
   padding-left: 0;
 
 }
 
+#restartIcon{
+
+
+  width: 20px;
+  height: 20px;
+  margin-top: 20px;
+
+
+}
 
 
 .container{
@@ -111,9 +127,8 @@ li{
   margin-right: auto;
   margin-top: 2%;
   border-radius: 20px;
-
-  width: 750px;
-  height: 750px;
+  width: 52%;
+  height: 80%;
   background-color: #6c8c94;
   display: flex;
   flex-wrap: wrap;
@@ -151,8 +166,8 @@ li{
 
 .top{
 
-  width: 120px;
-  height: 120px;
+  width: 8%;
+  height: 13%;
   border-radius: 10px;
   position: absolute;
 
