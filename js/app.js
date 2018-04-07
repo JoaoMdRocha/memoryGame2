@@ -54,12 +54,6 @@ cardsFlipped.push(addToArrayCard);
 length= arrayCompare.length;
 
 
-  if(clickCount ===1){
-
-    t0 = performance.now();
-
-  }
-
 //on every second click :
   if(clickCount %2 === 0){
 
