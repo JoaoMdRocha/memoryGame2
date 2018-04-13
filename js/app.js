@@ -21,6 +21,7 @@ var timer_is_on = 0;
 let removeStar1;
 let removeStar2;
 let starRating = 3;
+let thisCard = ['1',] ;
 
 
 //SHUFFLES CARDS
@@ -36,13 +37,32 @@ for (var i=0; i<listItems.length; i++) {
 
 function flipCard() {
 //Keeps tracks of number of clicks
-   clickCount= clickCount +1;
+
+
+thisCard.push(this);
+
+  if(thisCard.length == 1){
+
+    clickCount = 1;
+    console.log(clickCount);
+  }else{
+    if(thisCard[thisCard.length-2] != thisCard[thisCard.length-1])
+
+    {
+
+     clickCount= clickCount +1;
+     console.log(clickCount);
+
+    }
+  }
+
 //Starts Timer
     startCount();
 
 
 //ADDS "flippedCard" class to cards that have been flipped
 cardTop= this.firstElementChild;
+
 //Removes black cover on card - flips it
 cardTop.classList.remove("blackbck");
 this.classList.add("flippedCard");
@@ -117,6 +137,7 @@ length= arrayCompare.length;
       if(correctGuesses==8){
         document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts and " + starRating + " stars" ;
         const successDiv = document.querySelector(".success");
+        stopCount();
 
         successDiv.style.display="block";
 
@@ -132,7 +153,7 @@ button.addEventListener('click', function(){
   const successDiv = document.querySelector(".success");
   resetBoard()
   successDiv.style.display="none";
-  stopCount();
+
 
 
 });
@@ -148,6 +169,8 @@ function shuffle(){
 
 function startCount() {
   if (!timer_is_on) {
+  c=0;
+  document.getElementById("time").innerHTML= "time: " + c + " s";
   timer_is_on = 1;
   timedCount();
   }
@@ -161,8 +184,8 @@ function timedCount() {
 function stopCount() {
   clearTimeout(t);
   timer_is_on = 0;
-  c=0;
-  document.getElementById("time").innerHTML= "time: 0 s";
+
+  document.getElementById("time").innerHTML= "time: " + c + " s"
 
 
 }
@@ -202,7 +225,7 @@ const restartButton = document.getElementById("restartIcon");
 restartButton.addEventListener('click', function(){
 
   resetBoard();
-  stopCount();
+
 
 
 })
