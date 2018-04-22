@@ -31,9 +31,14 @@ shuffle();
 
 var listItems = document.getElementById("board").getElementsByTagName('li');
 
-for (var i=0; i<listItems.length; i++) {
-    listItems[i].addEventListener('click', flipCard, false);
-}
+
+function addListener(){
+  for (var i=0; i<listItems.length; i++) {
+      listItems[i].addEventListener('click', flipCard, false);
+  }
+};
+
+addListener();
 
 function flipCard() {
 //Keeps tracks of number of clicks
@@ -85,24 +90,31 @@ length= arrayCompare.length;
 
           removeStar1 = document.getElementById('star1')
           removeStar1.style.display="none";
+          starRating = 2;
 
       }
 
       if(clickCount>30){
         removeStar2 = document.getElementById('star2')
         removeStar2.style.display="none";
+        starRating =1;
 
       }
 
 //compares the last two elements of the array - the classes of the last two cards that have been flipped
       if(arrayCompare[length-2] == arrayCompare[length-1]){
       correctGuesses +=1;
-
+      console.log(this);
 //gives cards a green colour if they are the same
         for (i=1;i<= 2; i++){
 
           cardsFlipped[length-i].parentElement.classList.toggle("greenbck");
+          cardsFlipped[length-i].parentElement.removeEventListener('click', flipCard, false);
+
         }
+
+
+
 
 //gives cards a red colour if they are not the same
       }else{
@@ -113,6 +125,7 @@ length= arrayCompare.length;
            test= cardsFlipped[length-i].parentElement;
            test.classList.add("redbck");
            redCards.push(test);
+
            redCardsLength = redCards.length;
           }
 
@@ -128,13 +141,13 @@ length= arrayCompare.length;
 
            redCards[redCardsLength-i].firstElementChild.classList.add("blackbck");
          }
-       }, 1000);
+       }, 700);
 
        }
 
   //If player wins the game, get the pop up congratulating
 
-      if(correctGuesses==8){
+      if(correctGuesses==1){
         document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts and " + starRating + " stars" ;
         const successDiv = document.querySelector(".success");
         stopCount();
@@ -192,7 +205,7 @@ function stopCount() {
 
 function resetBoard(){
 
-
+  document.getElementById("time").innerHTML= "time: 0 s"
   const cards = document.getElementsByClassName("card");
   console.log(cards[1]);
   for (i=0; i<= (cards.length-1); i++){
@@ -204,17 +217,19 @@ function resetBoard(){
   document.getElementById('attempts').innerHTML = "Attempts: ";
   if (clickCount>20){
   removeStar1.style.display="block";
-  starRating = 2;
+
+  console.log(starRating);
   }
   if (clickCount>30){
   removeStar2.style.display="block";
-  starRating =1;
+
   }
 
 
   clickCount = 0;
   correctGuesses = 0;
   shuffle();
+  addListener();
 
 
 
