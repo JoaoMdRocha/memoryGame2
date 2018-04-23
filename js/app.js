@@ -29,7 +29,7 @@ shuffle();
 
 //adds event listener to all cards
 
-var listItems = document.getElementById("board").getElementsByTagName('li');
+let listItems = document.getElementById("board").getElementsByTagName('li');
 
 
 function addListener(){
@@ -147,7 +147,7 @@ length= arrayCompare.length;
 
   //If player wins the game, get the pop up congratulating
 
-      if(correctGuesses==1){
+      if(correctGuesses==8){
         document.getElementById('output').innerHTML = "You finished in " + c + " seconds,"  +(clickCount/2) + " attempts and " + starRating + " stars" ;
         const successDiv = document.querySelector(".success");
         stopCount();
@@ -228,6 +228,8 @@ function resetBoard(){
 
   clickCount = 0;
   correctGuesses = 0;
+  stopCount();
+  document.getElementById("time").innerHTML= "time: 0 s" ;
   shuffle();
   addListener();
 
